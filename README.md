@@ -38,7 +38,7 @@ See `docker run miy4/plantuml -h` or `run-plantuml -h` output for more details.
 ### Example
 
 ```sh
-$ run-plantuml -tpng -charset utf-8 sequece_diagram.uml
+$ run-plantuml -tpng -charset utf-8 sequence_diagram.uml
 ```
 
 ### License
