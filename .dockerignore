@@ -1,4 +1,5 @@
 .git
+.github
 LICENSE
 README.md
 run-plantuml

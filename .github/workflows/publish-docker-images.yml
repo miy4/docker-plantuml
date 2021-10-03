@@ -1,0 +1,23 @@
+name: Publish Docker images
+on:
+  push:
+    tags:
+      - "**"
+
+jobs:
+  push:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        name: Check out code
+        with:
+          fetch-depth: 1
+
+      - uses: mr-smithers-excellent/docker-build-push@v5
+        name: Build and push Docker image
+        with:
+          image: miy4/plantuml
+          addLatest: true
+          registry: docker.io
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
