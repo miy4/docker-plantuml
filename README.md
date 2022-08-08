@@ -1,18 +1,17 @@
-docker-plantuml
-==========
+# docker-plantuml
 
 Docker container with Alpine Linux, Java and PlantUML.  
 [PlantUML](http://plantuml.com/) is a Java program which generates UML diagrams from DSL-code.
 
-### Installation
+## Installation
 
-To pull:
+Pull from the Docker Hub:
 
 ```sh
 $ docker pull miy4/plantuml
 ```
 
-To build:
+Build from source:
 
 ```sh
 $ git clone https://github.com/miy4/docker-plantuml.git
@@ -20,10 +19,10 @@ $ cd docker-plantuml
 $ docker build -t miy4/plantuml .
 ```
 
-### Usage
+## Usage
 
 ```sh
-$ docker run -v ${PWD}:/work -w /work --rm [PLANTUML OPTIONS and ARGUMENTS]
+$ docker run -v ${PWD}:/work -w /work --rm -t miy4/plantuml [PLANTUML OPTIONS and ARGUMENTS]
 ```
 
 or
@@ -35,13 +34,13 @@ $ run-plantuml [PLANTUML OPTIONS and ARGUMENTS]
 `docker run` and `run-plantuml` accept and pass a set of parameters to PlantUML CLI.  
 See `docker run miy4/plantuml -h` or `run-plantuml -h` output for more details.
 
-### Example
+## Example
 
 ```sh
 $ run-plantuml -tpng -charset utf-8 sequence_diagram.uml
 ```
 
-### License
+## License
 
 MIT
 
