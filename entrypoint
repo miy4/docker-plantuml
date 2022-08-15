@@ -1,0 +1,30 @@
+#!/bin/sh
+
+if [ "$(id -u)" -ne 0 ]; then
+    printf 'Error: You cannot be non-root users\n' 1>&2
+    printf 'Use environment variables PUML_UID and PUML_GID to pass your UID/GID.\n' 1>&2
+    exit 1
+    # or should do nothing in particular?
+    # exec java -jar /app/plantuml.jar "$@"
+fi
+
+# Read UID/GID via environment variables.
+# If they are not available, Fetch UID/GID from the working directory.
+# These values would be the owner UID/GID of PlantUML's artifacts.
+#
+# Note: For Windows filesystems, stat always returns UID=0 and GID=0
+gid=${PUML_GID:-"$(stat -c '%g' .)"}
+uid=${PUML_UID:-"$(stat -c '%u' .)"}
+
+# Do as the root
+if [ "$uid" -eq 0 ] || [ "$gid" -eq 0 ]; then
+    exec java -jar /app/plantuml.jar "$@"
+fi
+
+# Create a new working user
+user='worker'
+groupadd --non-unique --gid "$gid" "$user"
+useradd --non-unique --uid "$uid" --gid "$gid" --create-home "$user"
+
+# Execute a PlantUML process as the worker
+su-exec "$user" java -jar /app/plantuml.jar "$@"
