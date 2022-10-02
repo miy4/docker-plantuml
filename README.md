@@ -1,5 +1,7 @@
 # docker-plantuml
 
+DISCONTINUED: The PlantUML project has released official Docker images on [GHCR](https://github.com/plantuml/plantuml/pkgs/container/plantuml) and [Docker Hub](https://hub.docker.com/r/plantuml/plantuml)
+
 Docker container with Alpine Linux, Java and PlantUML.  
 [PlantUML](http://plantuml.com/) is a Java program which generates UML diagrams from DSL-code.
 
