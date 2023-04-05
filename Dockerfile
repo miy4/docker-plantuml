@@ -1,4 +1,4 @@
-FROM docker.io/alpine:3
+FROM docker.io/alpine:3.16
 
 ENV PLANTUML_VERSION 1.2022.6
 ENV LANG en_US.UTF-8
